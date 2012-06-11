@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SoarIMPRINTPlugin
+namespace SMLExtension
 {
 	// a class for convenience methods on SML classes
 	public static class SMLExtension
