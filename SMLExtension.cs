@@ -212,5 +212,31 @@ namespace SMLExtension
 		{
 			return GetChildAtAttributePath(element, attributePath).ConvertToIdentifier();
 		}
+
+		// print the identifier at the given depth
+		public static string Print(this sml.Identifier id, int depth = 1)
+		{
+			if (id == null)
+			{
+				throw new ArgumentNullException("id");
+			}
+
+			string result = "(" + id.GetValueAsString();
+			foreach (sml.WMElement element in id.GetChildren())
+			{
+				result += " ^" + element.GetAttribute() + " " + element.GetValueAsString();
+			}
+			result += ") ";
+
+			if(depth > 1)
+			{
+				foreach (sml.Identifier child in id.GetIDChildren())
+				{
+					result += child.Print(depth - 1);
+				}
+			}
+
+			return result;
+		}
 	}
 }
